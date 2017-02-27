@@ -17,6 +17,7 @@ class CoursesController < ApplicationController
       link_to_video: params[:link_to_video], 
       background_image: params[:background_image]})
     @course.save
+    flash[:success] = "Hobby class created"
     redirect_to "/courses/#{@course.id}"
   end 
 
@@ -33,6 +34,14 @@ class CoursesController < ApplicationController
       background_image: params[:background_image],
       })
     @course.save
+    flash[:success] = "Hobby class updated"
     redirect_to "/courses/#{@course.id}"
   end 
+
+  def destroy 
+    @course = Course.find_by(id: params[:id])
+    @course.destroy
+    flash[:danger] = "Hobby class deleted"
+    redirect_to "/courses"
+  end
 end

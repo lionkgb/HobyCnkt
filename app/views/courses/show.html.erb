@@ -5,4 +5,5 @@
 <h4>Video: <%=@course.link_to_video%></h4>
 <br>
 <button class="btn btn-success"><a href="/courses/<%=@course.id%>/edit">Edit</a></button>
+<%= link_to "Delete", "/courses/#{@course.id}", method: :delete %>
 

@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <table>
+    <%= button_to "Add new class", "/courses/new", class: "btn btn-primary", method: :get %>
+    <table class="table-striped">
       <tr>
         <th>Image</th>
         <th>Hobby</th>
@@ -11,7 +12,7 @@
       <%@courses.each do |course| %>
         <tr>
           <td><img src="<%=course.background_image%>" class="photo"></td>
-          <td><a href="/courses/<%course.id%>"><%=course.hobby%></a></td>
+          <td><a href="/courses/<%=course.id%>"><%=course.hobby%></a></td>
           <td><%=course.description%></td>
           <td><%=course.link_to_video%></td>
         </tr>
