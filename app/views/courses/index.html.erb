@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <table>
+      <tr>
+        <th>Image</th>
+        <th>Hobby</th>
+        <th>Description</th>
+        <th>Video Link</th>
+      </tr>
+      <%@courses.each do |course| %>
+        <tr>
+          <td><img src="<%=course.background_image%>" class="photo"></td>
+          <td><a href="/courses/<%course.id%>"><%=course.hobby%></a></td>
+          <td><%=course.description%></td>
+          <td><%=course.link_to_video%></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+</div>

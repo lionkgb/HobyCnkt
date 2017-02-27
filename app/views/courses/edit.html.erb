@@ -1,0 +1,16 @@
+<h1> Edit class </h1>
+<%=form_tag "/courses/#{@course.id}", method: :patch do %>
+  <div>
+    Hobby: <input type="text" name="hobby" value="<%= @course.hobby%>">
+  </div>
+  <div>
+    Description: <input type="text" name="description" value="<%= @course.description%>">
+  </div>
+  <div>
+    Video Link: <input type="text" name="link_to_video" value="<%= @course.link_to_video%>">
+  </div>
+  <div>
+    Image: <input type="text" name="background_image" value="<%= @course.background_image%>">
+  </div>
+  <input type="submit" name="Edit class">
+<%end%>

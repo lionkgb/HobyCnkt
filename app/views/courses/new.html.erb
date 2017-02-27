@@ -1,0 +1,16 @@
+<h1> Create new Hobby class </h1>
+<%=form_tag "/courses", method: :post do %>
+  <div>
+    Hobby: <input type="text" name="hobby">
+  </div>
+  <div>
+    Description: <input type="text" name="description">
+  </div>
+  <div>
+    Video Link: <input type="text" name="link_to_video">
+  </div>
+  <div>
+    Image: <input type="text" name="background_image">
+  </div>
+  <input type="submit" name="Create Class">
+<%end%>
