@@ -1,0 +1,13 @@
+<h1> Your Booking </h1>
+
+<ul> 
+  <li> Booking Number <%= @booking.id %></li>
+  <li> Course <%= @booking.course.name %></li>
+  <li> Sessions/week <%= @booking.sessions_per_week%></li>
+  <li> Days in the week <%= @booking.days_in_a_week%></li>
+  <li> Hours/day <%= @booking.hours_per_day%></li>
+  <li> Start Time <%= @booking.start_time%></li>
+  <li> End time <%= @booking.end_time%></li>
+  <li> Fees/session <%= @booking.fees_per_session%></li>
+  <li> Offer <%= @booking.discount_or_offer%></li>
+</ul>

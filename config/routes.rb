@@ -7,4 +7,14 @@ Rails.application.routes.draw do
   post "/courses" => 'courses#create'
   patch "/courses/:id" => 'courses#update'
   delete "/courses/:id" => 'courses#destroy'
+
+  get "/signup" => 'users#new'
+  post "/users" => 'users#create'
+
+  get "/login" => 'sessions#new'
+  post "/login" => 'sessions#create'
+  delete "/logout" => 'sessions#destroy'
+
+  post "/orders" => 'orders#create'
+  get "/orders/:id" => 'orders#show' 
 end
