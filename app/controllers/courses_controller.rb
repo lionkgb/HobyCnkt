@@ -10,6 +10,15 @@ class CoursesController < ApplicationController
   def new
   end 
 
+  def search 
+    search_query = params[:search_input]
+    @courses = Course.where("hobby LIKE ? OR description LIKE ?", "%#{search_query}%", "%#{search_query}%")
+    if @courses.empty?
+      flash[:info] = "No results found in search"
+    end
+    render :index
+  end
+
   def create 
     @course = Course.new({
       hobby: params[:hobby], 

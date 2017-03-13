@@ -1,9 +1,10 @@
 <h3> Hobby Details </h3>
 <h4><img src="<%=@course.background_image%>" class="photo"></h4>
-<h4>Hobby: <%=@course.hobby%></h4>
-<h4>Description: <%=@course.description%></h4>
-<h4>Video: <%=@course.link_to_video%></h4>
+<h4><%=@course.hobby%></h4>
+<h4><%=@course.description%></h4>
+<h4><%=@course.link_to_video%></h4>
 <br>
 <button class="btn btn-success"><a href="/courses/<%=@course.id%>/edit">Edit</a></button>
 <%= link_to "Delete", "/courses/#{@course.id}", method: :delete %>
+
 
