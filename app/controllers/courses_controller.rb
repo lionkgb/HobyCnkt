@@ -1,6 +1,10 @@
 class CoursesController < ApplicationController
+  before_filter :authorize
   def index 
     @courses = Course.all
+    if params[:category]
+      @courses = Category.find_by(name: params[:category]).courses
+    end
   end 
 
   def show 

@@ -1,0 +1,2 @@
+class MultipleCourse < ApplicationRecord
+end
