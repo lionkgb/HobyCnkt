@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   post "/bookings" => 'bookings#create'
   get "/bookings/:id" => 'bookings#show' 
+  get "/pages" => 'pages#welcome'
 end
