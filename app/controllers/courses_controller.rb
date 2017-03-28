@@ -31,6 +31,8 @@ class CoursesController < ApplicationController
     @course = Course.new({
       name: params[:name],
       address: params[:address],
+      longitude: params[:longitude],
+      latitude: params[:latitude],
       phone_number: params[:phone_number],
       hobby: params[:hobby], 
       description: params[:description], 
@@ -69,6 +71,8 @@ class CoursesController < ApplicationController
     @course.assign_attributes({
       name: params[:name],
       address: params[:address],
+      longitude: params[:longitude],
+      latitude: params[:latitude],
       phone_number: params[:phone_number],
       hobby: params[:hobby], 
       description: params[:description], 

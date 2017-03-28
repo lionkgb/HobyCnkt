@@ -1,4 +1,6 @@
 class Course < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode
   belongs_to :day, optional:true
   belongs_to :category, optional: true
   has_many :course_days
