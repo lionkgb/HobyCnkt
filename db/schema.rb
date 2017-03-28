@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322091256) do
+ActiveRecord::Schema.define(version: 20170328085614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,10 @@ ActiveRecord::Schema.define(version: 20170322091256) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "course_id"
-    t.integer  "sessions_per_week"
-    t.string   "days_in_a_week"
-    t.integer  "hours_per_day"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.integer  "fees_per_session"
-    t.integer  "discount_or_offer"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "number_of_sessions"
+    t.integer  "total_amount"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -35,17 +30,39 @@ ActiveRecord::Schema.define(version: 20170322091256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "course_days", force: :cascade do |t|
+    t.integer  "course_id"
+    t.integer  "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "category_id"
+    t.integer  "sessions_per_week"
+    t.integer  "hours_per_day"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.integer  "fees_per_session"
+    t.integer  "discount_or_offer"
+    t.string   "hobby"
     t.text     "description"
     t.string   "background_image"
     t.string   "link_to_video"
-    t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "organization_id"
-    t.integer  "category_id"
-    t.string   "hobby"
+    t.float    "latitude"
+    t.string   "address"
+    t.string   "name"
+    t.string   "phone_number"
+    t.integer  "day_id"
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "multiple_courses", force: :cascade do |t|
@@ -54,22 +71,6 @@ ActiveRecord::Schema.define(version: 20170322091256) do
     t.integer  "number_of_courses"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-  end
-
-  create_table "organizations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.text     "function"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "phone_number"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string   "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

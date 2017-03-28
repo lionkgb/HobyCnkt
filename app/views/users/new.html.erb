@@ -1,26 +1,19 @@
-<h1>Signup!</h1>
-<%= form_tag '/users', method: :post do %>
-  <div>
-    First Name:
-    <input type="text" name="first_name">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="wrap">
+        <p class="form-title">
+            Sign Up</p>
+        <%= form_tag "/users", class: "login" do %>
+        <input type="text" name="first_name" placeholder="First name" />
+        <input type="text" name="last_name" placeholder="Last name" />
+        <input type="text" name="email" placeholder="Email" />
+        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="password_confirmation" placeholder="Confirm Password" />
+        <input type="submit" value="Sign Up" class="btn btn-success btn-sm" />
+        <%end%>
+      </div>
+    </div>
   </div>
-  <div>
-    Last Name
-    <input type="text" name="last_name">
-  </div>
-  <div>
-    Email:
-    <input type="email" name="email">
-  </div>
+</div>
 
-  <div>
-    Password:
-    <input type="password" name="password">
-  </div>
-
-  <div>
-    Confirm Password:
-    <input type="password" name="password_confirmation">
-  </div>
-  <input type="submit" name="submit">
-<%end%>

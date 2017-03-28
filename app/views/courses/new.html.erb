@@ -1,19 +1,70 @@
-<h1> Create new Hobby class </h1>
-<%=form_tag "/courses", method: :post do %>
-  <div>
-    Hobby: <input type="text" name="hobby">
+<div class="container">
+  <div class='row'>
+    <div class="col-md-1"></div>
+    <div class="thumbnail" style="width: 500px"> <h1 class="red-text text-center">Add new class </h1> </div>
+    <div class="col-md-9">
+      <%= form_tag "/courses", method: :post do  %>
+        <div class="red-text text-center">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Ex: Inema art center..">
+          </div><br>
+          <div class="form-group">
+            <input type="text" name="address" placeholder="Ex: KG 11 Av 183">
+          </div><br>
+          <div class="form-group">
+            <input type="text" name="phone_number" placeholder="+250.....">
+          </div><br>
+          <div class="form-group"> 
+            <input type="text" name="hobby" placeholder="Hobby name....">
+          </div><br>
+          <div class="form-group">
+            <textarea type="text" name="description" placeholder="Details on the hobby..."></textarea>
+          </div><br>
+
+          <div class="form-group">
+            <input type="url" name="link_to_video" placeholder="Link to a video showing a given practice..">
+          </div><br>
+          <div class="form-group"> 
+            <input type="url" name="background_image" placeholder="The background image of your showpage"> 
+          </div><br>
+          <div class="form-group"> 
+            <input type="number" name="hours_per_day" placeholder="Number of hours per day"> 
+          </div><br>
+          <div class="form-group">
+            <input type="text" name="start_time" placeholder="Ex: 7pm or 7:05am " style="width: 150px">
+          </div><br>
+          <div class="form-group"> 
+            <input type="text" name="end_time" placeholder="Ex: 8pm or 8:05am" style="width: 150px">
+          </div><br>
+          <div class="form-group">
+            <input type="text" name="fees_per_session" placeholder="Ex: 6000 Rwf/session">
+          </div><br>
+          <div class="form-group">
+            <select name="category_id">
+              <option value="" disabled selected>Category</option>
+              <% @categories.each do |category| %>
+                <option value="<%=category.id%>" <%= "selected" if @course.category_id == category.id%>><%=category.name%></option>
+              <%end%>
+            </select>
+          </div><br>
+          <div class="form-group">
+            <%@days.each do |day, index|%>
+              <%=day.name%>
+              <%= check_box_tag "day_ids[]", day.id, checked =false %>
+            <%end%>
+          </div>
+          <div class="form-group"> 
+            <input type="text" name="discount_or_offer" placeholder="Ex: -4% for 1 month client" style="width: 200px">
+          </div>
+        </div>
+      <input type="submit" value="Create Class">
+      <% end %>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
   </div>
-  <div>
-    Description: <input type="text" name="description">
-  </div>
-  <div>
-    Video Link: <input type="text" name="link_to_video">
-  </div>
-  <div>
-    Image: <input type="text" name="background_image">
-  </div>
-  <input type="submit" name="Create Class">
-<%end%>
+</div>
+</div>
 
 
 

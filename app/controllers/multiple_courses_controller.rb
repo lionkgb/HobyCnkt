@@ -1,0 +1,2 @@
+class MultipleCoursesController < ApplicationController
+end

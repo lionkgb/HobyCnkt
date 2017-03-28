@@ -1,16 +1,43 @@
 <h1> Edit class </h1>
 <%=form_tag "/courses/#{@course.id}", method: :patch do %>
   <div>
-    Hobby: <input type="text" name="hobby" value="<%= @course.hobby%>">
+    <input type="text" name="name" value="<%= @course.name%>">
   </div>
   <div>
-    Description: <input type="text" name="description" value="<%= @course.description%>">
+    <input type="text" name="address" value="<%= @course.address%>">
   </div>
   <div>
-    Video Link: <input type="text" name="link_to_video" value="<%= @course.link_to_video%>">
+    <input type="text" name="phone_number" value="<%= @course.phone_number%>">
   </div>
   <div>
-    Image: <input type="text" name="background_image" value="<%= @course.background_image%>">
+    <input type="text" name="hobby" value="<%= @course.hobby%>">
+  </div>
+  <div>
+    <textarea type="text" name="description" placeholder="Description..." ><%=@course.description%></textarea>
+  </div>
+  <div>
+    <input type="url" name="link_to_video" value="<%= @course.link_to_video%>" placeholder="Video link">
+  </div>
+  <div>
+    <input type="url" name="background_image" value="<%= @course.background_image%>" placeholder="Image Link">
+  </div>
+  <div>
+    <input type="number" name="hours_per_day" value="<%= @course.hours_per_day%>" placeholder="Number of hours each day" style="width: 150px">
+  </div>
+  <div>
+   <input type="text" name="start_time" value="<%=@course.start_time%>" placeholder="The starting time" style="width: 150px">
+  </div>
+  <div>
+   <input type="text" name="end_time" value="<%=@course.end_time%>" placeholder="Ending time" style="width: 150px">
+  </div>
+  <div>
+   <input type="number" name="fees_per_session" value="<%= @course.fees_per_session%>" placeholder="Fees/session" style="width: 150px">
+  </div>
+  <div>
+   <input type="number" name="discount_or_offer" value="<%= @course.discount_or_offer%>" placeholder="Offer for special customers" style="width: 150px">
+  </div>
+  <div>
+    
   </div>
   <input type="submit" name="Edit class">
 <%end%>

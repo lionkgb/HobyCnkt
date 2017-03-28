@@ -2,21 +2,13 @@
 <h4><img src="<%=@course.background_image%>" class="photo"></h4>
 <h4><%=@course.hobby%></h4>
 <h4><%=@course.description%></h4>
-<h4><%=@course.link_to_video%></h4>
-<br>
-
-<% if current_user%>
-  <%= form_tag "/bookings", method: :post do%>
-    <div>
-      Session/week: <input type="text" name="session_per_week">
-    </div>
-    <div>
-      <input type="hidden" name="course_id" value="<%= @course.id%>">
-    </div>
-  <%end%>
+<h4><%=@course.link_to_video%></h4><br>
+<% @course.days.each do |course_day| %>
+  <h4><%= course_day.name %>
 <%end%>
-
+<br>
 <button class="btn btn-success"><a href="/courses/<%=@course.id%>/edit">Edit</a></button>
 <%= link_to "Delete", "/courses/#{@course.id}", method: :delete %>
+
 
 

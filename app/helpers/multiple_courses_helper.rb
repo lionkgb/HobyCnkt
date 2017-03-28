@@ -1,0 +1,2 @@
+module MultipleCoursesHelper
+end
