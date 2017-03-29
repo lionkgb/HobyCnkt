@@ -1,14 +1,59 @@
-<h3> Hobby Details </h3>
-<h4><img src="<%=@course.background_image%>" class="photo"></h4>
-<h4><%=@course.hobby%></h4>
-<h4><%=@course.description%></h4>
-<h4><%=@course.link_to_video%></h4><br>
-<% @course.days.each do |course_day| %>
-  <h4><%= course_day.name %>
-<%end%>
-<br>
-<button class="btn btn-success"><a href="/courses/<%=@course.id%>/edit">Edit</a></button>
-<%= link_to "Delete", "/courses/#{@course.id}", method: :delete %>
+<div class="container-fluid" id="beside_nav">
+<div class="row">
 
+  <div class="col-md-2">
+  <% if current_user  && current_user.id == @course.user_id  %>
+  <p><%= button_to "Edit Course Post", "/courses/#{@course.id}/edit", method: :get %></p>
+  <p><%= button_to "Delete Course Post", "/courses/#{@course.id}", method: :delete %></p>  
+  <% end %>
+  </div>
+
+  <div class="col-md-8">      
+
+      <h4><%= @course.hobby %></h4>
+      <p><img src="<%=@course.background_image%>" class="photo"></p>
+      <p><strong><%=@course.name %> Organization</strong></p>
+      <p><%= @course.description %></p>
+      <h4> Link to video</h4>
+      <%= raw(@course.link_to_video) %>
+      <h4>Days for practice</h4>
+      <% @course.days.each do |course_day| %>
+        <p><%= course_day.name %></p>
+      <%end%>
+     <%= form_tag "/bookings/new?course_id=#{@course.id} ", method: :get do %>
+       <input type="hidden" name="course_id" class="form_control" value="<%= @course.id %>">
+      <%= button_to "Book Now" %>
+      <% end %>
+
+      <h3> Bookings </h3>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid" id="beside_nav">
+  <div class="row">
+    <div class = "col-md-12">
+      <% if current_user  && current_user.id == @course.user_id  %>       
+        
+        <% @course.bookings.each_slice(2) do |two_bookings| %>
+            <div class="row">
+              <% two_bookings.each do |booking| %>
+                <div class="col-md-6">
+                  <div style="font-size:15px;" id="appjumbotron">
+                  <p><strong><%= booking.first_name %> <%= booking.last_name %>  booking</strong></p> 
+                  <p>First Name: <%= booking.first_name %></p>
+                  <p>Last Name: <%= booking.last_name %></p>
+                  <p>Gender: <%= booking.sex %></p>
+                  <p>Email: <%= booking.email %></p>
+                  <p>Phone Number: <%= booking.phone_number %></p>
+                  </div>
+                </div>
+              <% end %>
+             </div>
+          <% end %>              
+     <% end %>
+  </div>
+  </div>
+  </div>
 
 

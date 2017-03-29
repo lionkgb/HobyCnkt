@@ -6,6 +6,9 @@
       <%= form_tag "/courses", method: :post do  %>
         <div class="red-text text-center">
           <div class="form-group">
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+          </div><br>
+          <div class="form-group">
             <input type="text" name="name" placeholder="Ex: Inema art center..">
           </div><br>
           <div class="form-group">

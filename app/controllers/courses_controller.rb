@@ -1,15 +1,15 @@
 class CoursesController < ApplicationController
-  # before_filter :authorize
-  def index 
-    if params[:category]
-      @courses = Category.find_by(name: params[:category]).courses
-    else 
-      @courses = Course.all
-    end
+  before_action :authenticate_user!, except: [:index, :show, :search]
+  def index  
+    @courses = Course.all
+    @bookings = Booking.all 
+    render "index.html.erb"
   end 
 
   def show 
     @course = Course.find_by(id: params[:id])
+    @booking = Booking.find_by(id: params[:id])
+    @category = Category.find_by(id: params[:id])
   end 
 
   def new
@@ -29,6 +29,7 @@ class CoursesController < ApplicationController
 
   def create 
     @course = Course.new({
+      user_id:params[:user_id],
       name: params[:name],
       address: params[:address],
       longitude: params[:longitude],
