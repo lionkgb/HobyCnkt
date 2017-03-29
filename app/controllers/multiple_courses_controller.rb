@@ -1,2 +1,0 @@
-class MultipleCoursesController < ApplicationController
-end

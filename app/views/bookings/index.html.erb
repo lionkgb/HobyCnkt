@@ -1,0 +1,25 @@
+<div class="container-fluid" id="beside_nav">
+<div class="row">
+
+  <div class="col-md-2"> 
+  </div>
+
+  <div class="col-md-8">
+  
+  <h4> All Applications </h4>
+  <% @bookings.each do |booking| %>
+    <p><strong>First Name</strong>  <%= booking.first_name %></p>
+    <p><strong>Last Name</strong>  <%= booking.last_name %></p>
+    <p><strong>Gender</strong>  <%= booking.sex %></p>
+    <p><strong>Phone Number</strong>  <%= booking.phone_number %></p>
+    <p><strong>Email</strong>  <%= booking.email %></p>
+    <p><strong>Cover Letter</strong>  <%= raw(booking.cover_letter) %></p>
+    <p><strong>Highest Degree</strong>  <%= booking.highest_degree %></p>
+    <p><strong>Experience</strong>  <%= booking.experience %></p>
+    
+  <%end%>
+
+      
+  </div>
+  </div>
+</div>

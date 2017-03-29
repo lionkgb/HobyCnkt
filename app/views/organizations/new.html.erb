@@ -1,0 +1,46 @@
+<div class="container">
+ <div class="rows">
+   <div class="col-md-6">
+      <h4> Create Organization </h4>
+
+      <%= form_tag "/organizations", method: :post do %>
+
+      <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <form>
+            <input type="hidden" name="user_id" class="form_control" value="<%= current_user.id %>">
+            
+            <div class="form-group">
+              <label class="control-label" for="focusedInput">Name</label>
+              <input class="form-control" id="focusedInput" type="text" name="name">
+            </div>
+
+            <div class="form-group">
+              <label class="control-label" for="focusedInput">Phone Number</label>
+              <input class="form-control" id="focusedInput" type="text" name="phone_number">
+            </div>
+
+            <div class="form-group">
+              <label for="focusedInput">Email</label>
+              <input type="email" class="form-control" id="focusedInput" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+
+            <div class="form-group">
+            <label>Official Website</label>
+            <textarea name="website" rows="2"></textarea>
+              <script>
+                  CKEDITOR.replace( 'website' );
+              </script>
+          </div>
+
+            
+
+            <div class="checkbox">
+            <input type="submit" class="btn btn-primary active" name="Create Account">
+          </div>
+
+        </form>
+
+      <% end %>
+    </div>
+  </div>
+</div>

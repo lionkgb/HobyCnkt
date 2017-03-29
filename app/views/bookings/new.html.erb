@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-6">
+   
+    <h4>We need you to fill some personal information</h4>
+
+    <%= form_tag "/bookings", :multipart => true, method: :post do %>
+
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+
+    <form>
+
+      <input type="hidden" name="course_id" class="form_control" value="<%= @course.id %>">
+
+      <div class="form-group">
+        <label class="control-label" for="focusedInput">First Name</label>
+        <input class="form-control" id="focusedInput" type="text" name="first_name">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="focusedInput">Last Name</label>
+        <input class="form-control" id="focusedInput" type="text" name="last_name">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="focusedInput">Gender</label>
+        <select class="form-control" id="focusedInput" name="sex" placeholder="Select your gender">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="focusedInput">Phone Number</label>
+        <input class="form-control" id="focusedInput" type="text" name="phone_number">
+      </div>
+
+      <div class="form-group">
+        <label for="emai1">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">Your email is kept safe with us</small>
+      </div>
+
+      <div class="checkbox">
+        <input type="submit" class="btn btn-primary active" name="Submit your application">
+    </div>
+
+    </form>
+<% end %>
+</div>
+</div>
+</div>
+
+

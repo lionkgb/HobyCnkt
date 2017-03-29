@@ -1,0 +1,19 @@
+<div class="container-fluid">
+<div class="row">
+
+  <div class="col-md-2">
+  <% if current_user  && current_user.id == @organization.user_id  %>
+  <p><%= button_to "Edit organization Info", "/organizations/#{@organization.id}/edit", method: :get %></p>
+  <p><%= button_to "Delete organization", "/organizations/#{@organization.id}", method: :delete %></p>  
+  <% end %>
+  </div>
+
+  <div class="col-md-8">
+    <h4><%= @organization.name %> organization Profile </h4>
+    <p><strong>Email: </strong><%= @organization.email %></p>
+    <p><strong>Phone Number</strong><%= @organization.phone_number %></p>
+    <p><strong>Website</strong><%= raw(@organization.website)%></p> 
+
+  </div>
+</div>
+</div>

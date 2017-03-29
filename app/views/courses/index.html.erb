@@ -99,20 +99,27 @@
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading"><%= course.name %></h1>'+
             '<div id="bodyContent">'+
-            '<p><b><%= course.name %></b>, is located at <b><%= course.address %></b>,';
+            '<p><b><%=course.name %></b>, is located at <b><%= course.address %>, click to get more details</p>'+
+            '</div>'+
+            '</div>';
           var course = {lat: <%=course.latitude.to_f%>, lng: <%=course.longitude.to_f%>};
           var infowindow = new google.maps.InfoWindow({
-            content: contentString
+            content: contentString,
+            maxWidth: 350
           });
-          
           var marker = new google.maps.Marker({
             position: course,
             map: map,
             title: '<%= course.name %>'
           });
-          marker.addListener('click', function() {
-            infowindow.open(map, marker);
+          google.maps.event.addListener(marker, 'mouseover', function() {
+            infowindow.open(map,marker);
+          });
+          google.maps.event.addListener(marker, 'click', function() {
             window.location.href = '/courses/<%=course.id%>'
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.close();
           });
         <% end %>;
         // Create the search box and link it to the UI element.

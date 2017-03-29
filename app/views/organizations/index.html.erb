@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <% if current_user %>
+      <%= button_to "Add New Company", "/organizations/new", method: :get %>
+    <% end %>
+    </div>
+    <div class="col-md-12">
+      <% @organizations.each_slice(3) do |three_organizations| %>
+        <div class="row">
+          <% three_organizations.each do |organization| %>
+            <div class="col-md-4">
+              <div class="jumbotron">
+              <h4><%= link_to organization.name, "/organizations/#{organization.id}" %></h4>
+              <p><strong>Email</strong>: <%= organization.email %></p>
+              <p style="font-size: 17px;"><strong>Website</strong>:<%= link_to organization.website, "<%=organization.website" %></p>
+              </div>
+            </div>
+          <% end %>
+         </div>
+      <% end %>
+    </div>
+  </div>
+</div>

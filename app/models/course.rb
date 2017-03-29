@@ -5,6 +5,7 @@ class Course < ApplicationRecord
   belongs_to :category, optional: true
   has_many :course_days
   has_many :days, through: :course_days
-  has_many :users, through: :bookings
-
+  belongs_to :organization
+  has_many :bookings
+  belongs_to :user
 end

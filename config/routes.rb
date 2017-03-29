@@ -15,7 +15,18 @@ Rails.application.routes.draw do
   post "/login" => 'sessions#create'
   delete "/logout" => 'sessions#destroy'
 
-  post "/bookings" => 'bookings#create'
-  get "/bookings/:id" => 'bookings#show' 
-  get "/pages" => 'pages#welcome'
+
+  get "/bookings", to: 'bookings#index'
+  get "/bookings/new", to: 'bookings#new'
+  post "/bookings", to: 'bookings#create'
+
+  get "/organizations", to: 'organizations#index'
+  get "/organizations/new", to: 'organizations#new'
+  get "/organizations/:id", to: 'organizations#show'
+  post "/organizations", to: 'organizations#create'
+  get "/organizations/:id/edit", to: 'organizations#edit'
+  patch "/organizations/:id", to: 'organizations#update'
+  delete "/organizations/:id", to: 'organizations#destroy'
+
+  
 end
